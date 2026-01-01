@@ -1,11 +1,12 @@
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.AI;
 
 public class Sphere : Interactable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField]
     private GameObject door;
+    public NavMeshObstacle obstacle;
     private bool doorOpen;
     void Start()
     {
@@ -21,5 +22,6 @@ public class Sphere : Interactable
     {
         doorOpen=!doorOpen;
         door.GetComponent<Animator>().SetBool("isOpen",doorOpen);
+        obstacle.enabled=!doorOpen; 
     }
 }

@@ -7,7 +7,7 @@ public class PlayerInteract : MonoBehaviour
     private LayerMask mask;
     [SerializeField]
     private PlayerUI playerUI;
-    private float distance = 5f;
+    private float distance = 10f;
 
     private InputManager inputManager ;
 
