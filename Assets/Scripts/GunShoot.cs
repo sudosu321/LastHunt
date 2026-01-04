@@ -9,12 +9,21 @@ public class GunShoot : MonoBehaviour
     public GunRecoil gunRecoil;
     public GameObject bulletImpactPrefab; // assign in inspector
     public PlayerHealth enemy;
+    public GameObject gun;
     public float impulse;
+    public int bulletCount=5;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Shoot();
+            if (bulletCount > 0)
+            {
+                if (gun.activeSelf)
+                {
+                    bulletCount--;
+                    Shoot();
+                }  
+            }
         }
     }
     void Shoot()
@@ -40,37 +49,29 @@ public class GunShoot : MonoBehaviour
                     if (rb != null)
                     {
                         Vector3 forceDir = ray.direction;
-                        float impactForce = impulse; // tweak this
-
+                        float impactForce = impulse; 
                         rb.AddForceAtPosition(forceDir * impactForce, hit.point, ForceMode.Impulse);
                     }
                     if (bulletImpactPrefab != null)
                     {
                         Vector3 impactPos = hit.point + hit.normal * 0.01f;
                         Quaternion impactRot = Quaternion.LookRotation(hit.normal);
-                        //create game objects
                         GameObject impact = Instantiate(bulletImpactPrefab, impactPos, impactRot);
                         impact.transform.SetParent(hit.collider.transform);
                         Destroy(impact, 10.00f); // destroys after 10 seconds
                         impact.transform.localScale *= UnityEngine.Random.Range(0.8f, 1.2f);
                         impact.transform.Rotate(0f, 0f, UnityEngine.Random.Range(0f, 360f));
                     }
-                    if(name.Contains("Enemy"))
-                    {
-                        enemy.Damage(20,30);     
-                    }
-                    else
-                    {
-                        PlayerHealth playerHealth =
-                        hit.collider.GetComponentInParent<PlayerHealth>();
+                    
+                    PlayerHealth playerHealth =
+                    hit.collider.GetComponentInParent<PlayerHealth>();
 
-                        if (playerHealth != null)
-                        {
+                    if (playerHealth != null)
+                    {
                             playerHealth.Damage(10,20);
                             return;
-                        }
                     }
-               
+                    
                 }
             }
         }

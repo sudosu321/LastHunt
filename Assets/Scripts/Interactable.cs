@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    public String promptMessage ="Helloo";
+    public String promptMessage ="";
     public void baseInteract()
     {
         Interact(); 

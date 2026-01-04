@@ -1,5 +1,4 @@
-using System;
-using System.Reflection.Emit;
+
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -30,7 +29,6 @@ public class Enemy : MonoBehaviour
     public ChangeEyes change1;
     public ChangeEyes change2;
     public GameObject arm;
-    public Vector3 rotationSpeed = new Vector3(90f, 90f, 90f); // degrees per second
     private Quaternion armStartRot;
     public float gunUpAngle = -90f;   // X axis (adjust sign if needed)
     public float armSpeed = 6f;
@@ -40,12 +38,10 @@ public class Enemy : MonoBehaviour
     public PlayerHealth playerHealth;
     public PlayerHealth enemy;
 
-
     [Header("Line of Sight")]
     public Transform eyes;                 // empty object at head
-    public LayerMask obstacleMask;         // walls
-    public LayerMask playerMask;           // player
     bool patrolInitialized;
+    public BloodEffect bloodEffect;
     void Start()
     {
         nextShootTime = 4f;
@@ -117,6 +113,7 @@ public class Enemy : MonoBehaviour
         }   
         if(playerHealth!=null)
             playerHealth.Damage(10,20);
+            bloodEffect.ShowBlood();
     }
 
     void AttackPlayer()
@@ -191,7 +188,6 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                // Hit something else first (wall, door, etc)
                 playerDetected = true;
                 attack = false;
             }
@@ -202,19 +198,17 @@ public class Enemy : MonoBehaviour
     {
         if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
         {
-            Debug.Log("❌ INVALID PATH");
+            Debug.Log("INVALID PATH");
         }
         else if (agent.pathStatus == NavMeshPathStatus.PathPartial)
         {
-            Debug.Log("⚠ PARTIAL PATH");
+            Debug.Log("PARTIAL PATH");
         }
         FacePlayer();
         AngryEyes();
         agent.isStopped = false;
         LowerHand();
-
-        //if (agent.remainingDistance > agent.stoppingDistance)
-            agent.SetDestination(player.position);
+        agent.SetDestination(player.position);
     }
     void FacePlayer()
     {
@@ -228,7 +222,7 @@ public class Enemy : MonoBehaviour
         if(!patrolInitialized && !playerHealth.isAlive)
             if (agent.hasPath)
             {
-                agent.ResetPath();   // ✅ FORCE NEW PAT
+                agent.ResetPath();   
                 patrolInitialized=true;
             }
         bulletShottedAfterAttackStart=0;
@@ -238,9 +232,6 @@ public class Enemy : MonoBehaviour
         if (patrolPoints.Length == 0)
             return;
 
-        //agent.isStopped = false;
-
-        // 🔴 THIS IS THE FIX
         agent.SetDestination(patrolPoints[currentPoint].position);
 
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
