@@ -1,10 +1,8 @@
 using UnityEngine;
 
-public class Ammo : Interactable
+public class Respawn : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public GunShoot gun;
-    public int addAmount=15;
     void Start()
     {
         
@@ -14,10 +12,5 @@ public class Ammo : Interactable
     void Update()
     {
         
-    }
-    protected override void Interact()
-    {
-       gun.bulletCount=gun.bulletCount+addAmount;
-       Destroy(gameObject);
     }
 }

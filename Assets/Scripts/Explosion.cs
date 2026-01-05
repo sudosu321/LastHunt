@@ -6,7 +6,7 @@ public class Explosion : MonoBehaviour
     public float delay = 1f;
     public float force = 300f;
     public float radius = 2f;
-    public float life = 5;
+    public float life = 30;
     public void Explode()
     {
         for (int x = 0; x < cubesPerAxis; x++)
@@ -19,8 +19,10 @@ public class Explosion : MonoBehaviour
                 }
             }
         }
-
-        Destroy(gameObject);
+        if(gameObject.GetComponent<Respawn>()==null)
+            Destroy(gameObject);
+        else
+            gameObject.SetActive(false);
     }
 
     void CreateCube(Vector3 coordinates)

@@ -89,7 +89,9 @@
     <Compile Include="Assets/Scripts/PlayerInteract.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/CameraController.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark03.cs" />
+    <Compile Include="Assets/Scripts/Interactables/Heal.cs" />
     <Compile Include="Assets/Scripts/Explosion.cs" />
+    <Compile Include="Assets/Scripts/Respawn.cs" />
     <Compile Include="Assets/Scripts/bloodeffect.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/DropdownSample.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexColorCycler.cs" />
