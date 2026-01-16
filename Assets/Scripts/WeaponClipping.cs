@@ -17,6 +17,7 @@ public class WeaponClipping : MonoBehaviour
 
     void Update()
     {
+        
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
 
         bool hitWall = Physics.Raycast(

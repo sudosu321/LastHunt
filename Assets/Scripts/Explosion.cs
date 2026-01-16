@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Explosion : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class Explosion : MonoBehaviour
     public float force = 300f;
     public float radius = 2f;
     public float life = 30;
+    public bool isSuperExploder=false;
+    public GameObject desServer;
+    public PlayerHold player;
     public void Explode()
     {
         for (int x = 0; x < cubesPerAxis; x++)
@@ -20,11 +24,24 @@ public class Explosion : MonoBehaviour
             }
         }
         if(gameObject.GetComponent<Respawn>()==null)
-            Destroy(gameObject);
+            if (isSuperExploder)
+            {
+                player.isCorruptedServerDestroyed=true;
+                Destroy(desServer);
+
+                Destroy(gameObject);  
+            }
+            else
+            {
+                Destroy(gameObject);  
+            }
         else
             gameObject.SetActive(false);
     }
-
+    void desobj()
+    {
+        
+    }
     void CreateCube(Vector3 coordinates)
     {
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);

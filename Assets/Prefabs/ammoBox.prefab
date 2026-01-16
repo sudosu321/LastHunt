@@ -155,6 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e582b88e5be80d390bf2dfc681d908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ammo
-  promptMessage: '[Press E to pick ammo]'
+  promptMessage: ammo amount 2
+  taskActive: 1
+  canPickup: 0
+  player: {fileID: 0}
   gun: {fileID: 0}
-  addAmount: 7
+  addAmount: 2

@@ -1,0 +1,29 @@
+using UnityEngine;
+
+public class RedPlug : Interactable
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        promptMessage="electric plug";
+        canPickup=true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    protected override void Interact()
+    {
+        if(player.isPlayerHasItem){
+            player.drop();
+        }
+        player.isPlayerHasItem=true;
+        player.itemO=gameObject;
+        player.itemT=transform;
+        player.rb=GetComponent<Rigidbody>();
+        player.col=GetComponent<Collider>();
+        Pickup(player.playerHand);
+    }
+}

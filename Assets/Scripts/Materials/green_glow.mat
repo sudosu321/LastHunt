@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: green_glow
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: fe5499adbdbe8b002b980ee3581a4438, type: 2}
+  m_Parent: {fileID: 2100000, guid: 4d8765cc1acac3b7a929fc6298690849, type: 2}
   m_ModifiedSerializedProperties: 10
   m_ValidKeywords:
   - _EMISSION
@@ -59,7 +59,7 @@ Material:
     - _WorkflowMode: 1
     m_Colors:
     - _BaseColor: {r: 0.1960784, g: 0.8039216, b: 0.1960784, a: 1}
-    - _Color: {r: 0.19607836, g: 0.8039216, b: 0.19607836, a: 1}
+    - _Color: {r: 0.1960784, g: 0.8039216, b: 0.1960784, a: 1}
     - _EmissionColor: {r: 0, g: 73.5167, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

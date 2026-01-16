@@ -1,0 +1,5 @@
+/home/kriko/TestGame (Android)/.utmp/RelWithDebInfo/4x5y5986/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/kriko/TestGame (Android)/.utmp/RelWithDebInfo/4x5y5986/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/home/kriko/TestGame (Android)/.utmp/RelWithDebInfo/4x5y5986/armeabi-v7a/GameActivity/CMakeFiles/game.dir
+/home/kriko/TestGame (Android)/.utmp/RelWithDebInfo/4x5y5986/armeabi-v7a/GameActivity/CMakeFiles/edit_cache.dir
+/home/kriko/TestGame (Android)/.utmp/RelWithDebInfo/4x5y5986/armeabi-v7a/GameActivity/CMakeFiles/rebuild_cache.dir
