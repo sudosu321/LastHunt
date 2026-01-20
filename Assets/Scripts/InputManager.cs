@@ -21,9 +21,7 @@ public class InputManager : MonoBehaviour
 
 
         // BUTTONS
-        onFoot.jump.performed += _ => movement.Jump();
         onFoot.Sprint.performed += _ => movement.SprintToggle();
-        onFoot.Crouch.performed += _ => movement.CrouchToggle();
     }
     void LateUpdate()
     {

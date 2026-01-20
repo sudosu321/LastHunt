@@ -63,7 +63,6 @@ public class PlayerInteract : MonoBehaviour
     }
     public void Use()
     {
-
         if (current != null)
         {
             current.baseInteract();

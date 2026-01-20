@@ -27,7 +27,7 @@ public class PlaceWire : Interactable
         {
             if (player.itemT != null)
             {
-                if (player.itemT.name.Contains("PickUpWire"))
+                if (player.itemT.name.Contains("pickable"))
                 {
                     promptMessage="circuit complete";
                     placeholderWire.SetActive(true);

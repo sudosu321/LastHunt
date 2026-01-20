@@ -68,16 +68,16 @@ public class GunShoot : MonoBehaviour
                         float impactForce = impulse; 
                         rb.AddForceAtPosition(forceDir * impactForce, hit.point, ForceMode.Impulse);
                     }
-                    if (bulletImpactPrefab != null)
+                    /*if (bulletImpactPrefab != null)
                     {
                         Vector3 impactPos = hit.point + hit.normal * 0.01f;
                         Quaternion impactRot = Quaternion.LookRotation(hit.normal);
-                        GameObject impact = Instantiate(bulletImpactPrefab, impactPos, impactRot);
+                        /*GameObject impact = Instantiate(bulletImpactPrefab, impactPos, impactRot);
                         impact.transform.SetParent(hit.collider.transform);
                         Destroy(impact, 10.00f); // destroys after 10 seconds
                         impact.transform.localScale *= UnityEngine.Random.Range(0.8f, 1.2f);
-                        impact.transform.Rotate(0f, 0f, UnityEngine.Random.Range(0f, 360f));
-                    }
+                        impact.transform.Rotate(0f, 0f, UnityEngine.Random.Range(0f, 360f));*/
+                    
                     if (hit.collider.name.Contains("ENEMY"))
                     {
                         enemy.Damage();

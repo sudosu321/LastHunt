@@ -8,7 +8,6 @@ public class SprintHold : MonoBehaviour,
 
     public void OnPointerDown(PointerEventData eventData)
     {
-         if (player.crouching) return;
         player.sprinting = true;
         player.sprinholdactive=true;
     }

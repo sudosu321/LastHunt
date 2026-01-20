@@ -54,7 +54,6 @@
     <Compile Include="Assets/Scripts/Interactables/ComputerMain.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/EnvMapAnimator.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_A.cs" />
-    <Compile Include="Assets/Scripts/Materials/textures/junky.cs" />
     <Compile Include="Assets/Scripts/RedPLug/LyingScript.cs" />
     <Compile Include="Assets/Scripts/Interactables/PlasmaFill.cs" />
     <Compile Include="Assets/Scripts/Interactables/TaskElectric.cs" />
@@ -77,6 +76,7 @@
     <Compile Include="Assets/Scripts/Player/GunRecoil.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexJitter.cs" />
     <Compile Include="Assets/Scripts/InputManager.cs" />
+    <Compile Include="Assets/GameTextures/TexturePNG/textures/junky.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexZoom.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_B.cs" />
@@ -104,14 +104,12 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark01.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TextMeshSpawner.cs" />
     <Compile Include="Assets/Scripts/Torch.cs" />
-    <Compile Include="Assets/Scripts/Interactables/Lockers.cs" />
     <Compile Include="Assets/Scripts/Feul/GenratorDiesel.cs" />
     <Compile Include="Assets/Scripts/settings/GameSettings.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/CameraController.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerInteract.cs" />
     <Compile Include="Assets/Scripts/OpenDoor.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark03.cs" />
-    <Compile Include="Assets/Scripts/Interactables/Heal.cs" />
     <Compile Include="Assets/Scripts/RedPLug/RedPlugElecPanel.cs" />
     <Compile Include="Assets/Scripts/Explosion.cs" />
     <Compile Include="Assets/Scripts/Respawn.cs" />
@@ -132,6 +130,8 @@
     <Compile Include="Assets/Scripts/Interactables/door.cs" />
     <Compile Include="Assets/Scripts/WireTask/ElectricGenratorButton.cs" />
     <Compile Include="Assets/Input/PlayerInput.cs" />
+    <Compile Include="Assets/GameTextures/plier/plier.cs" />
+    <Compile Include="Assets/GameTextures/plier/cuttableWire.cs" />
     <Compile Include="Assets/Scripts/Interactables/PickGun.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TextMeshProFloatingText.cs" />
     <Compile Include="Assets/Scripts/Feul/GenSwitch.cs" />
@@ -146,13 +146,14 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile-2-Pass.shader" />
     <None Include="Assets/TextMesh Pro/Examples &amp; Extras/Fonts/Unity - OFL.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />
-    <None Include="Assets/NewTExtures/eU_Textures/eU_ReadMe.txt" />
+    <None Include="Assets/GameTextures/TexturePNG/eU_Textures/eU_ReadMe.txt" />
     <None Include="Assets/TextMesh Pro/Examples &amp; Extras/Fonts/Oswald-Bold - OFL.txt" />
     <None Include="Assets/TextMesh Pro/Examples &amp; Extras/Fonts/Roboto-Bold - AFL.txt" />
     <None Include="Assets/TextMesh Pro/Examples &amp; Extras/Fonts/Anton OFL.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets/Scripts/Models/read.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/SDFFunctions.hlsl" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" />
     <None Include="Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" />

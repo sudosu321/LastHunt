@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.InputSystem;
 
 public class DeathScare : MonoBehaviour
 {

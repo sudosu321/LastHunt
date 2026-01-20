@@ -40,17 +40,29 @@ public class ElectricGenratorButton : Interactable
     }
     void GenratorElecStart()
     {
-        lights.SetActive(true);
-        promptMessage="Generator working";
-        elecGenStarted=true;
+        
         if (id_gen == 1)
         {
+            lights.SetActive(true);
+            promptMessage="Generator working";
+            elecGenStarted=true;
             player.A1_FEUL_TASK=true;
             
         }
         else
         {
-            player.SERVER_FEUL_TASK=true;
+            if (player.wireTaskComplete)
+            {
+                lights.SetActive(true);
+                promptMessage="Generator working";
+                elecGenStarted=true;
+                player.SERVER_FEUL_TASK=true;
+            }
+            else
+            {
+                promptMessage="circuit couldnt complete";
+                
+            }
         }
         
         taskActive=false;

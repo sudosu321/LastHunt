@@ -29,7 +29,7 @@ public class computer : Interactable
         }
         if (!player.isCorruptedServerDestroyed)
         {
-            promptMessage="There is a corrupted server that needs to be destroyed";
+            promptMessage="There is a corrupted server that needs to be shut";
             return;
         }
         

@@ -37,6 +37,7 @@ public class Explosion : MonoBehaviour
             }
         else
             gameObject.SetActive(false);
+            
     }
     void desobj()
     {
