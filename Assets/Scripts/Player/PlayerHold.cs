@@ -24,7 +24,8 @@ public class PlayerHold : MonoBehaviour
     public bool DIESEL_TASK=false;
     public NavMeshSurface nav;
     public bool isCorruptedServerDestroyed=false;
-
+    public int key_code=-1;
+    public bool key_held=false;
     public bool isServerFeulFilled=false;
     void Start()
     {

@@ -12,10 +12,21 @@ public class PlayerMovement : MonoBehaviour
     public bool sprinting;
     public AudioSource sound;
     public bool sprinholdactive=false;
+    public bool isMoving=false;
+
     void Start()
     {
         if (GameSettings.Instance != null)AudioListener.volume = GameSettings.Instance.masterVolume;
         speed = defSpeed;
+        if (GameSettings.Instance != null)
+            {
+                bool sett= GameSettings.Instance.debugMode;
+                if (sett)
+                {
+                    sprintSpeed=30;
+                    defSpeed=20;
+                }
+            }
     }
 
     public void SetMoveInput(Vector2 input)
@@ -39,20 +50,20 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move;
         if (sprinholdactive)
         {
+            speed = sprintSpeed;
             move = transform.forward;
         }
         else
         {
+             speed = defSpeed;
             move = transform.right * moveInput.x +transform.forward * moveInput.y;
-
         }
         move = move.normalized * speed;
-
-        // ✅ Apply gravity
+        isMoving=move.sqrMagnitude>0.01f;
         if (controller.isGrounded)
         {
             if (verticalVelocity < 0)
-                verticalVelocity = -2f; // keeps player grounded on slopes
+                verticalVelocity = -2f; 
         }
         else
         {

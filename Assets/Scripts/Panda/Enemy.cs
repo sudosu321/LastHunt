@@ -48,18 +48,30 @@
             anim.SetBool("isWalking", true);
             anim.SetBool("isLying", false);
             if (GameSettings.Instance != null)
+            {
                 isHostile= !GameSettings.Instance.debugMode;
+                if (!isHostile)
+                {
+                    runSpeed=4;
+                    walkSpeed=5;
+                    caughtRange=0;
+                }
+            }
+                
             agent = GetComponent<NavMeshAgent>();
             patrolling=true;
-
-            
-
             if (patrolPoints.Length > 0)
                 agent.SetDestination(patrolPoints[0].position);
         }
 
         void Update()
         {
+            timer+=Time.deltaTime;
+            if (timer < 1)
+            {
+                return;
+            }
+            timer=0;
             if (!security)
             {
                 if(audioSource.isPlaying)audioSource.Stop();
@@ -89,7 +101,7 @@
                 playerCaught=false;
                 playerDetected=false;
                 investigatingLastPosition=false;
-                Patrol();   
+                Patrol();
                 return;
             }
             DetectPlayer();
@@ -160,15 +172,13 @@
                 anim.SetBool("isRunning", true);
                 anim.SetBool("isWalking", false);
                 anim.SetBool("isLying", false);
-
             }
             else if (investigatingLastPosition) // Patrol/Investigate
             {
                 anim.SetBool("isRunning", false);
                 anim.SetBool("isWalking", true);
             }
-            else if (patrolling)
-            
+            else if (patrolling)   
             {
                 anim.SetBool("isRunning", false);
                 anim.SetBool("isWalking", true);
@@ -220,9 +230,10 @@
                     death.PlayDeathScare();
                     return;
             }
-            if (distance < detectionRange + 30 && (playerMovement.sprinholdactive || playerMovement.sprinting))
+            if (distance < detectionRange + 50 && (playerMovement.sprinholdactive || playerMovement.sprinting))
             {
                 playerDetected=true;
+                patrolling=false;
                 return;
             }
             if (distance > detectionRange )
@@ -235,7 +246,6 @@
             Vector3 origin = eyes.position;
             Vector3 targetPoint = player.position + Vector3.up * 1.2f;
             Vector3 direction = (targetPoint - origin).normalized;
-
             Debug.DrawRay(origin, direction * detectionRange, Color.red);
 
             if (Physics.Raycast(origin, direction, out RaycastHit hit, detectionRange))
@@ -248,15 +258,15 @@
                 }
                 else
                 {
-                        LosePlayer();
+                    LosePlayer();
                 }
             }
             else
             {
-                LosePlayer();
+                //LosePlayer();
             }
         }
-
+        
         private float afterChaseWait=0f;
         void ChasePoint(Vector3 position)
         {
@@ -287,7 +297,7 @@
 
             agent.speed = runSpeed;
             FacePlayer();
-            agent.isStopped = false;
+            //agent.isStopped = false;
             agent.SetDestination(player.position);
             NavMeshPath path = new NavMeshPath();
             bool hasPath = agent.CalculatePath(player.position, path);

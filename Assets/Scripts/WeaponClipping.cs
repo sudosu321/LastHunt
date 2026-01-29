@@ -7,7 +7,6 @@ public class WeaponClipping : MonoBehaviour
     public float pushBackDistance = 0.25f;
     public float smoothSpeed = 10f;
     public LayerMask wallMask;
-
     private Vector3 originalLocalPos;
 
     void Start()
