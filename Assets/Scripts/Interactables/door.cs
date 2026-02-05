@@ -59,6 +59,7 @@ public class door : Interactable
         }
         player.bakeit();
         promptMessage="";
+        doorTransform.GetComponent<AudioSource>().Play();
             isMoving = true;
             taskActive=false;
             return;

@@ -21,6 +21,9 @@ public class RedPlugElecPanel : Interactable
     private Vector3 closedPosition;
     private Vector3 openPosition;
     public AudioSource pandaWakes;
+    public AudioSource doorOpens
+    ;
+
     private bool isMoving = false;
     private bool isOpen = false;
     void Start()
@@ -37,19 +40,22 @@ public class RedPlugElecPanel : Interactable
     void movedoor()
     {
         isMoving=true;
-        
+        pandaWakes.Play();
     }
     void doAfterPanelOn()
     {
+        doorOpens.Play();
+
         Invoke("movedoor",1);
         Invoke("bakke",8);
         navMeshSurface.BuildNavMesh();
         wire.GetComponent<Renderer>().material=greenMat;
-        Invoke("spawn",4);
+        Invoke("spawn",3);
     }   
     void spawn()
     {
-        pandaWakes.Play();
+        
+        
         Destroy(display);
         enemy.SetActive(true);
         Animator anim = enemy.GetComponentInChildren<Animator>();

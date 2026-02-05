@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
                     defSpeed=20;
                 }
             }
+            sound.pitch=(1f);
+        
     }
 
     public void SetMoveInput(Vector2 input)
@@ -37,10 +39,18 @@ public class PlayerMovement : MonoBehaviour
     public void SprintToggle()
     {
         sprinting = !sprinting;
-        if (sprinting )
+        if (sprinting)
+        {
             speed = sprintSpeed;
+            sound.pitch=(1.5f);
+        }
+
         else
+        {
             speed = defSpeed;
+            sound.pitch=(1);
+            
+        }
     }
     public float gravity = -20f;
     float verticalVelocity;
@@ -48,14 +58,22 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Vector3 move;
-        if (sprinholdactive)
+        if (sprinholdactive || sprinting)
         {
+            sound.pitch=(1.5f);
             speed = sprintSpeed;
             move = transform.forward;
         }
+        else if(!sprinholdactive && !sprinting)
+        {
+            sound.pitch=(1);
+            speed = defSpeed;
+            move = transform.right * moveInput.x +transform.forward * moveInput.y;
+        }
         else
         {
-             speed = defSpeed;
+            sound.pitch=(1);
+            speed = defSpeed;
             move = transform.right * moveInput.x +transform.forward * moveInput.y;
         }
         move = move.normalized * speed;

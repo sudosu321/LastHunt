@@ -1,8 +1,11 @@
 
+using UnityEngine;
+
 public class GenElec : Interactable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public bool feulTankDone=false;
+    public AudioSource genHuming;
     void Start()
     {
         taskActive=true;
@@ -26,6 +29,8 @@ public class GenElec : Interactable
                     player.itemO.GetComponent<GasCan>().promptMessage="gas can empty";
                     feulTankDone=true;
                     taskActive=false;
+                    genHuming.Play();
+                    genHuming.loop=true;
                     return;
                 }
             }

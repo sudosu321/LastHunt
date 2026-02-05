@@ -27,6 +27,11 @@ public class PlayerHold : MonoBehaviour
     public int key_code=-1;
     public bool key_held=false;
     public bool isServerFeulFilled=false;
+
+    public bool isSwitchHeld=false;
+    public int switch_code=-1;
+    
+
     void Start()
     {
         electricTaskComplete=false;
@@ -39,12 +44,6 @@ public class PlayerHold : MonoBehaviour
     {
         nav.BuildNavMesh();
     }
-    public void Awake()
-    {
-        //rb = GetComponent<Rigidbody>();
-        //col = GetComponent<Collider>();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -93,6 +92,10 @@ public class PlayerHold : MonoBehaviour
     }
     public void dropItem()
     {
+        key_held=false;
+        isSwitchHeld=false;
+        key_code=-1;
+        switch_code=-1;
         if (gunPick.gunHeld)
         {       
             gunPick.dropGun();

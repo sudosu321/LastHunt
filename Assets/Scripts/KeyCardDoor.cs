@@ -14,6 +14,8 @@ public class KeyCardDoor : Interactable
     public bool forceOpen = false;
     public KeyCard key;
     private int reqKey = -1;
+    public Enemy enemy;
+    public SwitchBox switchs;
     void Start()
     {
         reqKey = key.KEY;
@@ -62,6 +64,20 @@ public class KeyCardDoor : Interactable
             {
                 promptMessage = "wrong key card";
                 return;
+            }
+            if (player.key_code == 2)
+            {
+                if (switchs.switchesTotal!=4)
+                {
+                    promptMessage="No power to the gate";
+                    return; 
+                }
+                if (enemy.security == false)
+                {
+                    promptMessage="Security needs to be off";
+                    return; 
+                }
+                
             }
             promptMessage = "";
             isMoving = true;
