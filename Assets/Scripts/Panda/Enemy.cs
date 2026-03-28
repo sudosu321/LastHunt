@@ -53,8 +53,8 @@ public class Enemy : MonoBehaviour
             isHostile = !GameSettings.Instance.debugMode;
             if (!isHostile)
             {
-                runSpeed = 4;
-                walkSpeed = 5;
+                runSpeed = 2;
+                walkSpeed = 2;
                 caughtRange = 0;
             }
         }
@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
             ChasePoint(pos);
             return;
         }
-        if (!isHostile)
+        /*if (!isHostile)
         {
             patrolling = true;
             playerCaught = false;
@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
             investigatingLastPosition = false;
             Patrol();
             return;
-        }
+        }*/
         DetectPlayer();
         if (playerCaught)
         {
@@ -177,18 +177,22 @@ public class Enemy : MonoBehaviour
         }
         else if (investigatingLastPosition) // Patrol/Investigate
         {
-            anim.SetBool("isRunning", false);
-            anim.SetBool("isWalking", true);
+            anim.SetBool("isRunning", true);
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isLying", false);
         }
         else if (patrolling && !waiting)
         {
             anim.SetBool("isRunning", false);
             anim.SetBool("isWalking", true);
+            anim.SetBool("isLying", false);
         }
-        else
+        else if(patrolling && waiting)
         {
             anim.SetBool("isRunning", false);
             anim.SetBool("isWalking", false);
+            anim.SetBool("isLying", false);
+            
         }
     }
 
@@ -234,6 +238,7 @@ public class Enemy : MonoBehaviour
         }
         if (distance < detectionRange + 30 && (playerMovement.sprinholdactive || playerMovement.sprinting))
         {
+            lastKnownPlayerPosition = player.position;
             playerDetected = true;
             patrolling = false;
             return;

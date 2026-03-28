@@ -12,12 +12,10 @@ public class Plasma : Interactable
         if (plasmaFill.isPicked)
         {
             promptMessage="cannot pick";
-            
         }
         else
         {
             promptMessage="plasma cube";
-            Debug.Log("works");
         }
     }
 

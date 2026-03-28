@@ -12,8 +12,13 @@ public class door : Interactable
     private bool isMoving = false;
     private bool isOpen = false;
     public bool forceOpen=false;
+    public AudioSource doorAudio;
     void Start()
     {
+        if (doorTransform.GetComponent<AudioSource>() != null)
+        {
+            doorAudio=doorTransform.GetComponent<AudioSource>();
+        }
         promptMessage = "door button";
         closedPosition = doorTransform.position ;
         openPosition = closedPosition + Vector3.up * openHeight;
@@ -54,7 +59,7 @@ public class door : Interactable
             isMoving = true;
             taskActive=false;
             player.bakeit();
-
+            doorAudio.Play();
             return;
         }
         player.bakeit();

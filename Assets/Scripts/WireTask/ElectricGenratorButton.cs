@@ -47,7 +47,7 @@ public class ElectricGenratorButton : Interactable
             promptMessage="Generator working";
             elecGenStarted=true;
             player.A1_FEUL_TASK=true;
-            
+            gen.genHuming.Play();
         }
         else
         {
@@ -56,6 +56,8 @@ public class ElectricGenratorButton : Interactable
                 lights.SetActive(true);
                 promptMessage="Generator working";
                 elecGenStarted=true;
+            gen.genHuming.Play();
+
                 player.SERVER_FEUL_TASK=true;
             }
             else

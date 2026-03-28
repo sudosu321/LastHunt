@@ -37,6 +37,7 @@ public class PlayerInteract : MonoBehaviour
                 useButton.SetActive(interactable.taskActive);
                 playerUI.updateText(interactable.promptMessage);
                 current=interactable;
+                if(current!=null) current.interactableConnect();
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     Use();

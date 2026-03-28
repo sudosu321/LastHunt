@@ -15,9 +15,13 @@ public class doorM : Interactable
     private bool isMoving = false;
     private bool isOpen = false;
     private Coroutine autoCloseRoutine;
-
+    AudioSource doorAudio;
     void Start()
     {
+        if (doorTransform.GetComponent<AudioSource>() != null)
+        {
+            doorAudio=doorTransform.GetComponent<AudioSource>();
+        }
         promptMessage = "Mechanical door button";
         closedPosition = doorTransform.position;
         openPosition = closedPosition + Vector3.up * openHeight;
@@ -65,15 +69,17 @@ public class doorM : Interactable
         }
 
         isMoving = true;
+        doorAudio.Play();
         promptMessage = "Mechanical door button";
     }
 
     IEnumerator AutoCloseDoor()
     {
         yield return new WaitForSeconds(autoCloseDelay);
-
         if (!isMoving && isOpen)
         {
+        doorAudio.Play();
+
             isMoving = true;
         }
     }

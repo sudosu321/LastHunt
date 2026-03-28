@@ -6,6 +6,10 @@ public abstract class Interactable : MonoBehaviour
 {
     public String promptMessage ="";
     public bool taskActive=true;
+    public void interactableConnect()
+    {
+        enterState();
+    }
     public void baseInteract()
     {
         Interact(); 
@@ -52,6 +56,10 @@ public abstract class Interactable : MonoBehaviour
         
     }
     protected virtual void Interact()
+    {
+        
+    }
+    protected virtual void enterState()
     {
         
     }

@@ -79,12 +79,8 @@ public class KeyCardDoor : Interactable
                 }
                 
             }
-            promptMessage = "";
-            isMoving = true;
-            taskActive = false;
-            player.bakeit();
-            return;
         }
+        doorTransform.GetComponent<AudioSource>().Play();
         player.bakeit();
         promptMessage = "";
         isMoving = true;

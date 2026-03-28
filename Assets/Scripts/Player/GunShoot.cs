@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -28,7 +29,7 @@ public class GunShoot : MonoBehaviour
     }
     public void OnFire()
     {
-        if (bulletCount > 0)
+        if (bulletCount != 0)
         {
             if (gun.activeSelf)
             {
@@ -77,7 +78,8 @@ public class GunShoot : MonoBehaviour
                             playerHealth.Damage(damage,damage+10);
                             return;
                     }
-                   
+                   enemy.explicitDiscover=true;
+                   enemy.lastKnownPlayerPosition=gun.transform.position;
                 }
             }
         }

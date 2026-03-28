@@ -8,6 +8,7 @@ public class GenElec : Interactable
     public AudioSource genHuming;
     void Start()
     {
+        genHuming=GetComponent<AudioSource>();
         taskActive=true;
         promptMessage="the feul tank";
     }
@@ -29,8 +30,7 @@ public class GenElec : Interactable
                     player.itemO.GetComponent<GasCan>().promptMessage="gas can empty";
                     feulTankDone=true;
                     taskActive=false;
-                    genHuming.Play();
-                    genHuming.loop=true;
+                    //genHuming.Play();
                     return;
                 }
             }

@@ -17,7 +17,7 @@ public class DeathScare : MonoBehaviour
     public float zoomSpeed = 8f;
     public float shakeIntensity = 0.02f;
     public float duration = 2f;
-
+    public GameObject gameObject;
     private float originalFOV;
     private Vector3 originalCamPos;
 
@@ -29,6 +29,7 @@ public class DeathScare : MonoBehaviour
 
     public void PlayDeathScare()
     {
+        gameObject.SetActive(false);
         GetComponentInChildren<PlayerLook>().enabled = false;
         GetComponentInChildren<MouseLook>().enabled = false;
 

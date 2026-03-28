@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 120;
+
         if (GameSettings.Instance != null)AudioListener.volume = GameSettings.Instance.masterVolume;
         speed = defSpeed;
         if (GameSettings.Instance != null)

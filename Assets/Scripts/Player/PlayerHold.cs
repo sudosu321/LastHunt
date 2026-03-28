@@ -30,7 +30,7 @@ public class PlayerHold : MonoBehaviour
 
     public bool isSwitchHeld=false;
     public int switch_code=-1;
-    
+    public bool isMusicPlaying=false;
 
     void Start()
     {
