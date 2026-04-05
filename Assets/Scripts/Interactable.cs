@@ -6,12 +6,20 @@ public abstract class Interactable : MonoBehaviour
 {
     public String promptMessage ="";
     public bool taskActive=true;
+    public string objectCode;
+    public AudioSource audioo;
+    public void Start()
+    {
+       
+    }
     public void interactableConnect()
     {
         enterState();
     }
     public void baseInteract()
     {
+        // audioo=GetComponent<AudioSource>();
+        if(audioo!=null)audioo.Play();
         Interact(); 
     }
     public bool canPickup = false;
@@ -24,7 +32,7 @@ public abstract class Interactable : MonoBehaviour
         col = GetComponent<Collider>();
         
     }
-
+    
     public virtual void Pickup(Transform playerhand)
     {
         //if(player.gunPick.gunHeld){promptMessage="cant hold multiple things";return;}

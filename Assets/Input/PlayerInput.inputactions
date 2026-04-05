@@ -16,15 +16,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "jump",
-                    "type": "Button",
-                    "id": "76b2ba7b-e7e3-44d7-b5c9-06b23519ad50",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Look",
                     "type": "Value",
                     "id": "4cb8442b-ac90-466d-8309-f2a74b6541ab",
@@ -32,15 +23,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Crouch",
-                    "type": "Button",
-                    "id": "2bd846c1-46d6-4005-94b9-886c0eb76f63",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 },
                 {
                     "name": "Sprint",
@@ -64,6 +46,24 @@
                     "name": "fire",
                     "type": "Button",
                     "id": "643e0cf7-55cb-458e-b12b-629be06953c7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "drop",
+                    "type": "Button",
+                    "id": "c61877b0-2ef7-4d4f-a114-a8d0d7dd18f4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "escape",
+                    "type": "Button",
+                    "id": "989fda66-97eb-4216-8688-47630720dbe6",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -139,17 +139,6 @@
                 },
                 {
                     "name": "",
-                    "id": "fded28d8-cf60-46a2-8de6-6ffd052fe094",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "466335f3-4746-4059-8935-aede447c1778",
                     "path": "<Mouse>/delta",
                     "interactions": "",
@@ -183,17 +172,6 @@
                 },
                 {
                     "name": "",
-                    "id": "5e76a3dd-1021-4fdf-aaa0-4828247d46b4",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "2438cd1b-1787-4214-80a0-49b623b14bdf",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
@@ -216,8 +194,8 @@
                 },
                 {
                     "name": "",
-                    "id": "3708d6ef-a1eb-4098-845a-9079f484866c",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "f88437c0-899c-4eef-855e-142a8386b28d",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -227,12 +205,56 @@
                 },
                 {
                     "name": "",
-                    "id": "f88437c0-899c-4eef-855e-142a8386b28d",
+                    "id": "2b2bebc3-75af-4f57-98f0-908507d28889",
                     "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8853e293-b9bf-4f72-9ba8-9595344f915e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6ce78b2-f8da-48c5-8461-ddf0b4d25550",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76c938ee-05af-4b76-a739-475ecaca9a5f",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6aa04201-5d96-4ee7-98ba-f91f9df8603b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -255,7 +277,7 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "748c91f3-384b-448a-9a6c-9bc0ec0812be",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -264,7 +286,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "1c5af1bb-a9a5-4848-b27a-a9b7ef7b1caf",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

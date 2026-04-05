@@ -18,14 +18,7 @@ public class PickGun : Interactable
     // Update is called once per frame
     void Update()
     {
-        /*if (gun.activeSelf)
-        {
-            gunHeld=true;
-        }
-        else
-        {
-            gunHeld=false;
-        }*/
+        
     }
     protected override void Interact()
     {
@@ -33,14 +26,14 @@ public class PickGun : Interactable
             player.drop();
         }
         gunHeld=true;
+        if(shootButton!=null)
         shootButton.SetActive(gunHeld);
         player.isPlayerHasItem=true;    
         gun.SetActive(true);
         transform.SetParent(player.transform);
         gameObject.SetActive(false);
-        //Destroy(gameObject);
     }
-    public void dropGun()
+    public void     dropGun()
     {
         promptMessage="MP5 submachine gun";
         transform.SetParent(null); // ✅ unparent FIRST
@@ -50,6 +43,7 @@ public class PickGun : Interactable
         
       //  transform.SetParent(null);
         gunHeld=false;
-        shootButton.SetActive(gunHeld);
+        if(shootButton!=null)
+            shootButton.SetActive(gunHeld);
     }
 }

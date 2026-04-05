@@ -16,20 +16,16 @@ public class PlayerLook : MonoBehaviour
             Application.platform == RuntimePlatform.OSXPlayer ||
             Application.platform == RuntimePlatform.LinuxPlayer)
         {
-            //Debug.Log("Desktop platform");
             desktop_platform=true;
         }
         else
         {
-            //Debug.Log("Android platform");
-
             desktop_platform=false;
         }
     }
     public void SetLookInput(Vector2 input)
     {
         lookInput = input;
-       // Debug.Log(input.x);
     }
 
     void Update()

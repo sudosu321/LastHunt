@@ -3,9 +3,13 @@ using UnityEngine;
 public class Torch : Interactable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public GameObject torch;
+    public GameObject torchLight;
+    public GameObject torchIcon;
+    public GameObject torchItem;
+    public Light l1;
     void Start()
     {
+        torchItem=gameObject;
         promptMessage="an electric torch";
     }
 
@@ -16,8 +20,15 @@ public class Torch : Interactable
     }
     protected override void Interact()
     {
-        torch.SetActive(true);
-        Destroy(gameObject);
+        l1.intensity=1f;
+        player.torchLight=torchLight;
+        player.torchIcon=torchIcon;
+        player.torchItem=torchItem;
+        torchLight.SetActive(true);
+        torchIcon.SetActive(true);
+        torchItem.transform.SetParent(player.transform);
+        torchItem.SetActive(false);
+        player.toggleTorch();
 
     }
 }

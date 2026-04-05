@@ -24,7 +24,7 @@ public class GunShoot : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))    
         {
-           //OnFire(); [desktop]
+           OnFire(); 
         }
     }
     public void OnFire()

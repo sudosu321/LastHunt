@@ -8,6 +8,10 @@ public class MainMenu : MonoBehaviour
         GameSettings.Instance.debugMode = false;
         SceneManager.LoadScene("main_game");
     }
+    public void intro()
+    {
+        SceneManager.LoadScene("intro");
+    }
 
     public void DebugPlay()
     {

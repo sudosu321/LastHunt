@@ -10,6 +10,8 @@ public class computer : Interactable
     public GameObject mainui;
     public Enemy enemy;
     public GameObject textField;
+    public int delaysec=60;
+    public DOOR_OPENER door;
     void Start()
     {
         
@@ -50,7 +52,7 @@ public class computer : Interactable
         }
         else
         {
-            textField.GetComponent<TMP_InputField>().text="WRONG...";
+            textField.GetComponent<TMP_InputField>().text="RENTER SERIAL CODE";
             enemy.security=true;
             enemy.explicitDiscover=true;
             enemy.pos=transform.position;
@@ -58,6 +60,9 @@ public class computer : Interactable
     }
     void OpenComputer()
     {
+        textField.GetComponent<TMP_InputField>().ActivateInputField();
+        textField.GetComponent<TMP_InputField>().Select();
+
         compui.SetActive(true);
         mainui.SetActive(false);
     }
@@ -73,10 +78,11 @@ public class computer : Interactable
 
     public void DisableSecurity()
     {
+        door.toggle();
         enemy.security=false;
-        promptMessage="Security Disabled for 60s";
+        promptMessage="Security Disabled for "+delaysec+"s";
         taskActive=false;
-        Invoke("activate",60);
+        Invoke("activate",delaysec);
         CloseComputer();
     }
     void activate()

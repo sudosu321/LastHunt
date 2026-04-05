@@ -19,6 +19,7 @@ public class TaskElectric : MonoBehaviour
     private bool isMoving = false;
     private bool isOpen = false;
     public bool forceOpen=false;
+    public AudioSource lightAud;
     ChangeWire wire;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,16 +37,23 @@ public class TaskElectric : MonoBehaviour
         if (togglesSwitch >= noswitch)
         {
             Debug.Log("Lights on !!");
-            RenderSettings.skybox = daySkybox;
-            DynamicGI.UpdateEnvironment();
-            lightdir.SetActive(true);
-            sun.intensity = 0.4f;
-            sun.color = Color.white;
+           lights();
             wire.colorAllWires();
             GetComponent<PlayerHold>().electricTaskComplete=true;
             GetComponent<ComputerMain>().computerStart=true;
             openStageDoor();
         }
+    }
+    public void lights()
+    {
+        lightAud.Play();
+         RenderSettings.skybox = daySkybox;
+            DynamicGI.UpdateEnvironment();
+            lightdir.SetActive(true);
+            RenderSettings.fogDensity = 0.005f; // lighter fog
+            RenderSettings.fogColor = Color.white;
+            sun.intensity = 1f;
+           
     }
     void openStageDoor()
     {   

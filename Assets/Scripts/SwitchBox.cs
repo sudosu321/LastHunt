@@ -25,7 +25,7 @@ public class SwitchBox : Interactable
         {
             switchesTotal++;
             taskActive=false;
-            promptMessage="electricity on";
+            promptMessage="main gate powered on";
             return;
         }
         if (!player.isPlayerHasItem) return;

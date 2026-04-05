@@ -8,11 +8,17 @@ public class Explosion : MonoBehaviour
     public float force = 300f;
     public float radius = 2f;
     public float life = 30;
-    public bool isSuperExploder=false;
-    public GameObject desServer;
+    public AudioSource expSound;
+    public ParticleSystem prt;
     public PlayerHold player;
+    public void Start()
+    {
+        prt=GetComponent<ParticleSystem>();        
+   }
     public void Explode()
     {
+        Destroy(gameObject);
+
         for (int x = 0; x < cubesPerAxis; x++)
         {
             for (int y = 0; y < cubesPerAxis; y++)
@@ -23,21 +29,10 @@ public class Explosion : MonoBehaviour
                 }
             }
         }
-        if(gameObject.GetComponent<Respawn>()==null)
-            if (isSuperExploder)
-            {
-                player.isCorruptedServerDestroyed=true;
-                Destroy(desServer);
-
-                Destroy(gameObject);  
-            }
-            else
-            {
-                Destroy(gameObject);  
-            }
-        else
-            gameObject.SetActive(false);
-            
+        if(expSound!=null)
+        expSound.Play();
+        if(prt!=null)
+        prt.Play();
     }
     void desobj()
     {
@@ -46,12 +41,9 @@ public class Explosion : MonoBehaviour
     void CreateCube(Vector3 coordinates)
     {
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-
         Renderer rd = cube.GetComponent<Renderer>();
         rd.material = GetComponent<Renderer>().material;
-
         cube.transform.localScale = transform.localScale / cubesPerAxis;
-
         Vector3 firstCube =
             transform.position
             - transform.localScale / 2
@@ -62,7 +54,6 @@ public class Explosion : MonoBehaviour
 
         Rigidbody rb = cube.AddComponent<Rigidbody>();
         rb.AddExplosionForce(force, transform.position, radius);
-
         Destroy(cube,life);
     }
 }

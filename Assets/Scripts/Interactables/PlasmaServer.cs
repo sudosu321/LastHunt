@@ -8,6 +8,7 @@ public class PlasmaServer : Interactable
     public Material green;
     private PlasmaFill plasmaFill;//player
     bool alreadyWorks=false;
+    public AudioSource plasmaServerFilled;
     void Awake()
     {
         plasmaFill = FindAnyObjectByType<PlasmaFill>();
@@ -15,6 +16,7 @@ public class PlasmaServer : Interactable
 
     void Start()
     {   
+        plasmaServerFilled=GetComponent<AudioSource>();
         canPickup=false;
         Renderer renderer = gameObject.GetComponent<Renderer>();
         
@@ -68,6 +70,7 @@ public class PlasmaServer : Interactable
             renderer1.material=green;
             plasmaFill.isPicked=false;
             alreadyWorks=true;
+            plasmaServerFilled.Play();
             if (gameObject.GetComponent<ChangeWire>() != null)
             {
                 gameObject.GetComponent<ChangeWire>().change();

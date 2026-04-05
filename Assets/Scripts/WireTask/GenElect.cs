@@ -6,6 +6,7 @@ public class GenElec : Interactable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public bool feulTankDone=false;
     public AudioSource genHuming;
+    public AudioSource genFilling;
     void Start()
     {
         genHuming=GetComponent<AudioSource>();
@@ -26,6 +27,7 @@ public class GenElec : Interactable
                 if (player.itemO.GetComponent<GasCan>().isFilled)
                 {
                     promptMessage="Genrator refilled";
+                    genFilling.Play();
                     player.itemO.GetComponent<GasCan>().isFilled=false;
                     player.itemO.GetComponent<GasCan>().promptMessage="gas can empty";
                     feulTankDone=true;

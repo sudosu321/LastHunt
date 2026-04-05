@@ -4,16 +4,17 @@ public class MouseLook : MonoBehaviour
 {
     public PlayerLook lookController;
     public float mouseSensitivity = 1f;
-
+    private bool ispc;
     void Start()
     {
+        ispc=GetComponent<GameMode>().pc;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     void Update()
     {
-        if (!lookController.desktop_platform)//android platform
+        if (!ispc)//android platform
         {
             return;
         }

@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/boot_menu.unity
     guid: f26134411424095828eda3492db6726a
+  - enabled: 0
+    path: Assets/intro.unity
+    guid: d9792c9108fe4c8428c4342c324317db
   - enabled: 1
     path: Assets/main_menu.unity
     guid: 3d25c8e084efa7821b481a902dcab172
@@ -23,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/final_scene.unity
     guid: e7334e8c79ad7434e8fd63002d42e534
+  - enabled: 1
+    path: Assets/death.unity
+    guid: 575b1247d9b10144e9d73b7251631a84
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 4858df0136f48755ab985c57a0e9118b, type: 3}
   m_UseUCBPForAssetBundles: 0

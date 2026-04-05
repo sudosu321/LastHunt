@@ -3,25 +3,35 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    PlayerInteract player;
     PlayerInput input;
     public PlayerInput.OnFootActions onFoot;
-
     PlayerMovement movement;
     PlayerLook look;
+    PlayerHold hold;
     MouseLook mlook;
+    PausePlay pp;
+    public GunShoot gun;
 
     void Awake()
     {
         input = new PlayerInput();
         onFoot = input.OnFoot;
-
+        player=GetComponent<PlayerInteract>();
         movement = GetComponent<PlayerMovement>();
         look = GetComponentInChildren<PlayerLook>();
         mlook = GetComponentInChildren<MouseLook>();
-
+        hold=GetComponent<PlayerHold>();
+        pp=GetComponent<PausePlay>();
 
         // BUTTONS
         onFoot.Sprint.performed += _ => movement.SprintToggle();
+        onFoot.Interact.performed += _ => player.Use();
+        onFoot.escape.performed += _ => pp.handle();
+        onFoot.fire.performed += _ => gun.OnFire();
+
+
+
     }
     void LateUpdate()
     {

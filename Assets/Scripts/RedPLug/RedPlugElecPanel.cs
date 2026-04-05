@@ -26,6 +26,7 @@ public class RedPlugElecPanel : Interactable
 
     private bool isMoving = false;
     private bool isOpen = false;
+    public AudioSource plugSwitch;
     void Start()
     {
         taskActive=true;
@@ -54,8 +55,6 @@ public class RedPlugElecPanel : Interactable
     }   
     void spawn()
     {
-        
-        
         Destroy(display);
         enemy.SetActive(true);
         Animator anim = enemy.GetComponentInChildren<Animator>();
@@ -89,7 +88,7 @@ public class RedPlugElecPanel : Interactable
                 player.drop();
                 panelFixed=true;
                 Destroy(plug);
-                
+                plugSwitch.Play();
                 return;
             }
             else

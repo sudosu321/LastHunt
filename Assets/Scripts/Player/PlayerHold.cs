@@ -31,9 +31,18 @@ public class PlayerHold : MonoBehaviour
     public bool isSwitchHeld=false;
     public int switch_code=-1;
     public bool isMusicPlaying=false;
+    public bool isTorchOn=false;
+    public GameObject torchIcon;
+    public GameObject torchLight;
+    public GameObject torchItem;
+    public GameObject paperObject;
+    public bool isNoteOpened=false;
+    public bool isIdCardOpened=false;
 
-    void Start()
+    public bool ispc=false;
+        void Start()
     {
+        
         electricTaskComplete=false;
     }
     public void bakeit()
@@ -43,6 +52,10 @@ public class PlayerHold : MonoBehaviour
     void baker()
     {
         nav.BuildNavMesh();
+    }
+    public void toggleTorch()
+    {
+        isTorchOn=!isTorchOn;
     }
     // Update is called once per frame
     void Update()

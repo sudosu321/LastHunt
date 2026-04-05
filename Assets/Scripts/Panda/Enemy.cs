@@ -1,4 +1,5 @@
 
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [Header("Patrol")]
     public Transform[] patrolPoints;
-    private int currentPoint;
+    public int currentPoint;
     private float waitCounter;
     public float runSpeed = 10;
     public float walkSpeed = 10;
@@ -14,16 +15,16 @@ public class Enemy : MonoBehaviour
     [Header("Detection")]
     public float detectionRange = 50f;
     public float caughtRange = 5f;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     public Transform player;
-    private bool playerDetected = false;
-    private bool playerCaught = false;
+    public bool playerDetected = false;
+    public bool playerCaught = false;
     public Vector3 lastKnownPlayerPosition;
 
     [Header("Investigation")]
     public float investigateStoppingDistance = 1.5f;
     public bool investigatingLastPosition = false;
-    private float waitTime = 5f;
+    public float waitTime = 5f;
     [Header("References")]
     public PlayerMovement playerMovement;
     public DeathScare death;
@@ -34,7 +35,7 @@ public class Enemy : MonoBehaviour
     public float fastPitch;
     public Animator anim;
     public bool isHostile = true;
-    bool patrolling = false;
+    public bool patrolling = false;
     public bool isDead = false;
     public int hits = 0;
     public float RespawnTime = 10f;
@@ -43,6 +44,12 @@ public class Enemy : MonoBehaviour
     public Vector3 pos;
     public float timer;
     public bool waiting = false;
+    public int deaths=0;
+
+    public bool hasHit=false;
+    public bool playerDead=false;
+    public NavMeshSurface navMeshSurface;
+    public ParticleSystem system;
     void Start()
     {
         anim.SetBool("isRunning", false);
@@ -71,6 +78,8 @@ public class Enemy : MonoBehaviour
         {
             if (audioSource.isPlaying) audioSource.Stop();
             agent.isStopped = true;
+            patrolling=false;
+            playerDetected=false;
             anim.SetBool("isRunning", false);
             anim.SetBool("isWalking", false);
             anim.SetBool("isLying", false);
@@ -84,6 +93,8 @@ public class Enemy : MonoBehaviour
         HandleAudio();
         if (explicitDiscover)
         {
+            patrolling=false;
+            playerDetected=false;
             anim.SetBool("isRunning", true);
             anim.SetBool("isWalking", false);
             anim.SetBool("isLying", false);
@@ -102,6 +113,7 @@ public class Enemy : MonoBehaviour
         DetectPlayer();
         if (playerCaught)
         {
+            deaths++;
             FacePlayer();
             audioSource.Stop();
             agent.isStopped = true;
@@ -120,6 +132,7 @@ public class Enemy : MonoBehaviour
         hits++;
         if (hits >= 3)
         {
+            system.Play();
             agent.isStopped = true;
             anim.SetBool("isLying", true);
             anim.SetBool("isWalking", false);
@@ -163,11 +176,11 @@ public class Enemy : MonoBehaviour
             anim.SetBool("isWalking", false);
             anim.SetBool("isLying", false);
         }
-        if (playerCaught)
+        if (playerCaught && !hasHit)
         {
+            playerDead=true;
             anim.SetTrigger("hit");
-
-            return;
+            hasHit = true;
         }
         if (playerDetected) // Chase
         {
@@ -208,10 +221,20 @@ public class Enemy : MonoBehaviour
     void InvestigateLastPosition()
     {
         if (!agent.pathPending && agent.remainingDistance <= investigateStoppingDistance)
-            investigatingLastPosition = false;
+        {
+            waiter+=Time.deltaTime;
+            if(waiter>waitTime){
+                 investigatingLastPosition = false;
+                patrolling=true;
+                waiter=0f;
+            }
+           
+        }
     }
+    private float waiter=0f;
     void LosePlayer()
     {
+        
         if (playerDetected)
         {
             investigatingLastPosition = true;
@@ -229,12 +252,18 @@ public class Enemy : MonoBehaviour
 
         if (distance < caughtRange && !playerCaught)
         {
-            playerCaught = true;
-            agent.isStopped = true;
-            agent.ResetPath();
-            anim.SetTrigger("hit");
-            death.PlayDeathScare();
-            return;
+            if (playerDead == false)
+            {
+                playerCaught = true;
+                playerDead=true;
+                agent.isStopped = true;
+                player.GetComponent<PlayerHold>().dropItem();
+                agent.ResetPath();
+                anim.SetTrigger("hit");
+                death.PlayDeathScare();
+                return;
+            }
+            
         }
         if (distance < detectionRange + 30 && (playerMovement.sprinholdactive || playerMovement.sprinting))
         {
@@ -261,6 +290,7 @@ public class Enemy : MonoBehaviour
             {
                 lastKnownPlayerPosition = player.position;
                 playerDetected = true;
+                patrolling=false;
                 explicitDiscover = false;
             }
             else
@@ -274,28 +304,36 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private float afterChaseWait = 0f;
+    private float afterChaseWait = 0;
     void ChasePoint(Vector3 position)
     {
         audioSource.pitch = (fastPitch);
-
+        patrolling=false;
+                
         agent.speed = runSpeed;
         FacePlayer();
         agent.isStopped = false;
         agent.SetDestination(position);
-        bool hasPath = agent.CalculatePath(player.position, new NavMeshPath());
+        NavMeshPath path = new NavMeshPath();
+        bool hasPath = agent.CalculatePath(position,path);
         if (agent.remainingDistance < 10)
         {
             explicitDiscover = false;
         }
-        if (!hasPath)
+
+        if (!hasPath || path.status==NavMeshPathStatus.PathPartial ||path.status==NavMeshPathStatus.PathInvalid)
         {
             afterChaseWait += Time.deltaTime;
-            if (afterChaseWait > 5)
+            if (afterChaseWait > waitTime)
             {
+                patrolling=true;
                 playerDetected = false;
                 afterChaseWait = 0;
             }
+        }
+        else
+        {
+            afterChaseWait = 0;
         }
     }
     void ChasePlayer()
@@ -304,18 +342,29 @@ public class Enemy : MonoBehaviour
 
         agent.speed = runSpeed;
         FacePlayer();
-        //agent.isStopped = false;
+        agent.isStopped = false;
         agent.SetDestination(player.position);
         NavMeshPath path = new NavMeshPath();
         bool hasPath = agent.CalculatePath(player.position, path);
-        if (!hasPath)
+        if (agent.remainingDistance < 10)
+        {
+            explicitDiscover = false;
+        }
+        if (!hasPath || path.status==NavMeshPathStatus.PathPartial||path.status==NavMeshPathStatus.PathInvalid)
         {
             afterChaseWait += Time.deltaTime;
-            if (afterChaseWait > 5)
+            if (afterChaseWait > waitTime)
             {
                 playerDetected = false;
+                patrolling=true;
+                agent.ResetPath();
                 afterChaseWait = 0;
             }
+        }
+        else
+        {
+            // IMPORTANT: reset timer if path is valid again
+            afterChaseWait = 0;
         }
     }
 

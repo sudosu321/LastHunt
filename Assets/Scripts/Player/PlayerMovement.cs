@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
             sound.pitch=(1f);
-        
     }
 
     public void SetMoveInput(Vector2 input)
@@ -52,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = defSpeed;
             sound.pitch=(1);
-            
         }
     }
     public float gravity = -20f;
@@ -99,7 +97,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-
             if(sound.isPlaying==true)sound.Stop();   
         }
     }

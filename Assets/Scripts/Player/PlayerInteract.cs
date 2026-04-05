@@ -10,7 +10,7 @@ public class PlayerInteract : MonoBehaviour
     private LayerMask mask;
     [SerializeField]
     private PlayerUI playerUI;
-    private float distance = 8f;
+    public float distance = 8f;
     public GameObject useButton;
     private InputManager inputManager ;
     private Interactable current;
@@ -34,14 +34,12 @@ public class PlayerInteract : MonoBehaviour
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             if (hit.collider.GetComponent<Interactable>() != null)
             {
+                //Debug.Log(interactable.transform.name);
                 useButton.SetActive(interactable.taskActive);
                 playerUI.updateText(interactable.promptMessage);
                 current=interactable;
                 if(current!=null) current.interactableConnect();
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    Use();
-                }
+                
             }
             else
             {
@@ -51,6 +49,8 @@ public class PlayerInteract : MonoBehaviour
         }
         else
         {
+                current=null;
+
             useButton.SetActive(false);
         }
         

@@ -16,6 +16,9 @@ public class KeyCardDoor : Interactable
     private int reqKey = -1;
     public Enemy enemy;
     public SwitchBox switchs;
+    public AudioSource accept;
+    public AudioSource reject;
+    public AudioSource enviro;
     void Start()
     {
         reqKey = key.KEY;
@@ -63,6 +66,7 @@ public class KeyCardDoor : Interactable
             if (!(player.key_code== reqKey))
             {
                 promptMessage = "wrong key card";
+                reject.Play();
                 return;
             }
             if (player.key_code == 2)
@@ -72,14 +76,16 @@ public class KeyCardDoor : Interactable
                     promptMessage="No power to the gate";
                     return; 
                 }
-                if (enemy.security == false)
+                if (enemy.security == true)
                 {
-                    promptMessage="Security needs to be off";
+                    promptMessage="Security system needs to be off";
                     return; 
                 }
                 
             }
         }
+        if(enviro!=null)enviro.Play();
+        accept.Play();  
         doorTransform.GetComponent<AudioSource>().Play();
         player.bakeit();
         promptMessage = "";

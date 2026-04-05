@@ -16,6 +16,7 @@ public class doorM : Interactable
     private bool isOpen = false;
     private Coroutine autoCloseRoutine;
     AudioSource doorAudio;
+    public NavMeshSurface nav;
     void Start()
     {
         if (doorTransform.GetComponent<AudioSource>() != null)
@@ -41,9 +42,10 @@ public class doorM : Interactable
 
         if (Vector3.Distance(doorTransform.position, target) < 0.01f)
         {
+            //nav.BuildNavMesh();
             doorTransform.position = target;
             isMoving = false;
-                player.nav.BuildNavMesh();
+            //player.nav.BuildNavMesh();
             isOpen = !isOpen;
 
             // Start auto close AFTER opening
@@ -53,6 +55,7 @@ public class doorM : Interactable
                     StopCoroutine(autoCloseRoutine);
 
                 autoCloseRoutine = StartCoroutine(AutoCloseDoor());
+                
             }
         }
     }
@@ -65,6 +68,7 @@ public class doorM : Interactable
         if (autoCloseRoutine != null)
         {
             StopCoroutine(autoCloseRoutine);
+
             autoCloseRoutine = null;
         }
 
