@@ -6,6 +6,7 @@ public class PlaceWire : Interactable
     public WirePickable wire;
     public GameObject placeholderWire;
     public GameObject actualWire;
+    public GameObject b;
     void Start()
     {
         promptMessage="this wire is broken";
@@ -35,6 +36,7 @@ public class PlaceWire : Interactable
                     Destroy(actualWire);
                     player.wireTaskComplete=true;
                     taskActive=false;
+                    b.GetComponent<Interactable>().promptMessage="button to power on servers";
                 }
                 else
                 {

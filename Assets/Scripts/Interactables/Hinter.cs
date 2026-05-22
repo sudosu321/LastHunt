@@ -19,7 +19,6 @@ public class Hinter : Interactable
     }
     protected override void Interact()
     {
-        
         promptMessage=onInteract;
     }
 }

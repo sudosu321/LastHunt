@@ -8,15 +8,24 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/boot_menu.unity
-    guid: f26134411424095828eda3492db6726a
   - enabled: 0
     path: Assets/intro.unity
     guid: d9792c9108fe4c8428c4342c324317db
   - enabled: 1
+    path: Assets/boot_menu.unity
+    guid: f26134411424095828eda3492db6726a
+  - enabled: 1
     path: Assets/main_menu.unity
     guid: 3d25c8e084efa7821b481a902dcab172
+  - enabled: 1
+    path: Assets/credits.unity
+    guid: b8ed9f93fdfeb2847b5d32ba3e953f2f
+  - enabled: 1
+    path: Assets/menu_selector.unity
+    guid: 3e0a2a9620152574ba336e48aa512f98
+  - enabled: 1
+    path: Assets/intro_scene.unity
+    guid: c64fe8849a234ed4988cec7de668b01f
   - enabled: 1
     path: Assets/settings.unity
     guid: 285cdcfae5223cf4e8b65b4dfd1407fc
@@ -30,5 +39,8 @@ EditorBuildSettings:
     path: Assets/death.unity
     guid: 575b1247d9b10144e9d73b7251631a84
   m_configObjects:
+    com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: 5bba12348ddfa7843bb323ec67b7f549, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: aeb429b63a9ab0a40bc3943499ce04b1, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: d90fc92670b5d054db98317c7c62792f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 4858df0136f48755ab985c57a0e9118b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -13,7 +13,7 @@ public class PlayerInteract : MonoBehaviour
     public float distance = 8f;
     public GameObject useButton;
     private InputManager inputManager ;
-    private Interactable current;
+    public Interactable current;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +37,7 @@ public class PlayerInteract : MonoBehaviour
                 //Debug.Log(interactable.transform.name);
                 useButton.SetActive(interactable.taskActive);
                 playerUI.updateText(interactable.promptMessage);
+
                 current=interactable;
                 if(current!=null) current.interactableConnect();
                 

@@ -18,6 +18,7 @@ public class Ammo : Interactable
     protected override void Interact()
     {
        gun.bulletCount=gun.bulletCount+addAmount;
+       gun.updateText();
        Destroy(gameObject);
     }
 }

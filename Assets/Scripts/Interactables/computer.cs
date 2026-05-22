@@ -1,107 +1,173 @@
+using System.Collections;
 using TMPro;
+using Unity.AI.Navigation;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.AI;
 
 public class computer : Interactable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public ComputerMain computerMain;
     public GameObject compui;
     public GameObject mainui;
-    public Enemy enemy;
+    public Enemy[] enemy;
+    public Enemy dummy;
+
     public GameObject textField;
-    public int delaysec=60;
+    public int delaysec = 60;
     public DOOR_OPENER door;
+    public bool bypass = true;
+    
+    private TMP_InputField inputField;
+    public AudioSource not;
+    public AudioSource ok;
+    public NavMeshSurface navMeshSurface;
+    public    GameObject GLASS;
+    public AudioSource BLAST;
     void Start()
     {
-        
+        inputField = textField.GetComponent<TMP_InputField>();
     }
+
     protected override void Interact()
     {
-        
+        if (bypass)
+        {
+            EnterSerialCode();
+            return;
+        }
         if (!computerMain.computerStart)
         {
-            promptMessage="this computer isnt on";
+            promptMessage = "This computer isn't on";
             return;
         }
         if (!player.SERVER_FEUL_TASK)
         {
-            promptMessage="Computer needs to be connected to server";
+            promptMessage = "Computer needs to be connected to server";
             return;
         }
         if (!player.isCorruptedServerDestroyed)
         {
-            promptMessage="There is a corrupted server that needs to be shut";
+            promptMessage = "There is a corrupted server that needs to be shut down";
             return;
         }
-        
+
         EnterSerialCode();
     }
-    void EnterSerialCode()
-    {   
-        player.GetComponent<PlayerMovement>().enabled=false;
-        player.GetComponentInChildren<PlayerLook>().enabled=false;
 
+    void EnterSerialCode()
+    {
+        player.GetComponent<PlayerInteract>().enabled = false;
+        player.GetComponent<PlayerMovement>().enabled = false;
+        player.GetComponentInChildren<PlayerLook>().enabled = false;
         OpenComputer();
     }
+
+    void OpenComputer()
+    {
+        compui.SetActive(true);
+        mainui.SetActive(false);
+        this.enabled = false; // prevent re-triggering Interact()
+
+        inputField.text = "";
+        StartCoroutine(FocusInputField());
+    }
+
+    IEnumerator FocusInputField()
+    {
+        yield return null; // wait one frame for UI to initialize
+        inputField.ActivateInputField();
+        inputField.Select();
+    }
+
     public void onOkay()
     {
-        if (textField.GetComponent<TMP_InputField>().text.Contains("4AX7"))
+        if (inputField.text.Contains("4AX7"))
         {
-            DisableSecurity();
+            DisableSecurity(0);
+        }
+        else if (inputField.text.Contains("2710"))
+        {
+            DisableSecurity(1);
         }
         else
         {
-            textField.GetComponent<TMP_InputField>().text="RENTER SERIAL CODE";
-            enemy.security=true;
-            enemy.explicitDiscover=true;
-            enemy.pos=transform.position;
+            not.Play();
+            inputField.text = "";
+            inputField.placeholder.GetComponent<TMP_Text>().text = "WRONG CODE, RE-ENTER";
+            enemy[0].security = true;
+            enemy[0].explicitDiscover = true;
+            enemy[0].pos = transform.position;
+
+            // re-focus so player can try again
+            StartCoroutine(FocusInputField());
         }
     }
-    void OpenComputer()
+    void changeMessage()
     {
-        textField.GetComponent<TMP_InputField>().ActivateInputField();
-        textField.GetComponent<TMP_InputField>().Select();
-
-        compui.SetActive(true);
-        mainui.SetActive(false);
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
+        promptMessage = "SuperComputer that probably controls the robot";
         
     }
-
-    void OnTriggerExit(Collider other)
+    public void DisableSecurity(int i)
     {
-    }
-
-    public void DisableSecurity()
-    {
+       
+        if (GLASS != null)
+        {
+             BLAST.Play();
+            Destroy(GLASS);
+        
+        }
+        ok.Play();
         door.toggle();
-        enemy.security=false;
-        promptMessage="Security Disabled for "+delaysec+"s";
-        taskActive=false;
-        Invoke("activate",delaysec);
+        Invoke("navBuild",5);
+        enemy[i].security = false;
+        promptMessage = "Security Disabled for " + delaysec + "s";
+        Invoke("changeMessage",2);
+        dummy.enabled=true;
+        if (i == 0)
+        {
+            Invoke("ReactivateSecurity0", delaysec);
+            
+        }
+        if (i == 1)
+        {
+            Invoke("ReactivateSecurity1", delaysec);
+            
+        }
         CloseComputer();
     }
-    void activate()
+    public void navBuild()
     {
-        enemy.security=true;
-        promptMessage="super computer that probably controls the robot";
-        taskActive=true;
+        navMeshSurface.BuildNavMesh();
     }
+    void ReactivateSecurity0()
+    {
+        enemy[0].security = true;
+        promptMessage = "Super computer that probably controls the robot";
+        taskActive = true;
+    }
+    void ReactivateSecurity1()
+    {
+        enemy[1].security = true;
+        promptMessage = "Super computer that probably controls the robot";
+        taskActive = true;
+    }
+
     public void CloseComputer()
     {
         compui.SetActive(false);
         mainui.SetActive(true);
-        player.GetComponent<PlayerMovement>().enabled=true;
-        player.GetComponentInChildren<PlayerLook>().enabled=true;
-
+         player.GetComponent<PlayerInteract>().enabled = true;
+        player.GetComponent<PlayerMovement>().enabled = true;
+        player.GetComponentInChildren<PlayerLook>().enabled = true;
+        this.enabled = true; // re-enable interactions
     }
-    // Update is called once per frame
+
     void Update()
     {
-        
+        // close computer with Escape key
+        if (compui.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseComputer();
+        }
     }
-}
+}   

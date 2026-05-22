@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TaskElectric : MonoBehaviour
 {
-    private int noswitch=3;
+    private int noswitch=4;
     public int togglesSwitch=0;
     public Light sun;
     public GameObject lightdir;
@@ -20,13 +20,14 @@ public class TaskElectric : MonoBehaviour
     private bool isOpen = false;
     public bool forceOpen=false;
     public AudioSource lightAud;
+    public Enemy panda2;
     ChangeWire wire;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         closedPosition = doorTransform.position ;
         openPosition = closedPosition + Vector3.up * openHeight;
-        noswitch=3;
+        noswitch=4;
         wire=GetComponent<ChangeWire>();
         plasmaFill = FindAnyObjectByType<PlasmaFill>();
     }
@@ -38,6 +39,7 @@ public class TaskElectric : MonoBehaviour
         {
             Debug.Log("Lights on !!");
            lights();
+           panda2.enabled=(true);
             wire.colorAllWires();
             GetComponent<PlayerHold>().electricTaskComplete=true;
             GetComponent<ComputerMain>().computerStart=true;

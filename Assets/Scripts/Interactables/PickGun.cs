@@ -30,6 +30,8 @@ public class PickGun : Interactable
         shootButton.SetActive(gunHeld);
         player.isPlayerHasItem=true;    
         gun.SetActive(true);
+        gun.GetComponent<GunShoot>().updateText();
+
         transform.SetParent(player.transform);
         gameObject.SetActive(false);
     }

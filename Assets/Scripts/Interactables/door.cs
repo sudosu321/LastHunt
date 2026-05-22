@@ -13,7 +13,7 @@ public class door : Interactable
     private bool isOpen = false;
     public bool forceOpen=false;
     public AudioSource doorAudio;
-    void Start()
+    public void Start()
     {
         if (doorTransform.GetComponent<AudioSource>() != null)
         {

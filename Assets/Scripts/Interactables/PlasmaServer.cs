@@ -8,13 +8,17 @@ public class PlasmaServer : Interactable
     public Material green;
     private PlasmaFill plasmaFill;//player
     bool alreadyWorks=false;
+    public int serverID=0;
     public AudioSource plasmaServerFilled;
-    void Awake()
+    public Electric electric;
+
+    public void Awake()
     {
+        defPlay=false;
         plasmaFill = FindAnyObjectByType<PlasmaFill>();
     }
 
-    void Start()
+    public void Start()
     {   
         plasmaServerFilled=GetComponent<AudioSource>();
         canPickup=false;
@@ -70,6 +74,9 @@ public class PlasmaServer : Interactable
             renderer1.material=green;
             plasmaFill.isPicked=false;
             alreadyWorks=true;
+            if(audioo!=null)audioo.Play();
+            electric.powerboxState[serverID]=true;
+            electric.promptMessage="turn on this board";
             plasmaServerFilled.Play();
             if (gameObject.GetComponent<ChangeWire>() != null)
             {

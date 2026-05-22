@@ -45,8 +45,19 @@ public class DeathScare : MonoBehaviour
         NOTE.SetActive(false);
         idobj.SetActive(false);
         GetComponent<ExitNote>().OnClick();
+        if (GetComponent<PlayerInteract>().current != null)
+        { 
+        GetComponent<PlayerInteract>().current=null;
+            
+        }
+       
+
         GetComponentInChildren<PlayerLook>().enabled = false;
         GetComponentInChildren<MouseLook>().enabled = false;
+        GetComponent<PlayerMovement>().sprinholdactive=false;
+        if(GetComponent<PlayerMovement>().sound.isPlaying)
+            GetComponent<PlayerMovement>().sound.Pause();
+        GetComponent<PlayerMovement>().sprinting=false;
         GetComponent<PlayerMovement>().sprinholdactive=false;
         GetComponent<PlayerMovement>().enabled = false;
         scareSound.Play();
@@ -55,16 +66,17 @@ public class DeathScare : MonoBehaviour
 
     IEnumerator JumpscareRoutine()
     {
-        float timer = 0f;   
+        float timer = 0f;  
+        playerCam.transform.LookAt(enemyhead); 
         enemyFace.position =
         playerCam.transform.position +
-        playerCam.transform.forward * 6f;
+        playerCam.transform.forward * 5f;
         while (timer < duration)
         {
             timer += Time.deltaTime;
             //enemyFace.transform.LookAt(playerCam.transform);
             // Look at enemy
-            playerCam.transform.LookAt(enemyhead);
+            
             if (timer > duration / 2)
             {
                 if (stomp != null)
@@ -158,11 +170,17 @@ public class DeathScare : MonoBehaviour
         
         GetComponentInChildren<PlayerLook>().enabled = true;
         GetComponentInChildren<MouseLook>().enabled = true;
+        GetComponentInChildren<PlayerInteract>().enabled = true;
+
         GetComponent<PlayerMovement>().enabled = true;
         GetComponent<PlayerMovement>().sprinholdactive=false;
         GetComponent<PlayerMovement>().sprinting=false;
+        Invoke("setactiveafter",20);
 
+    }
+    public void setactiveafter()
+    {
         enemy.gameObject.SetActive(true);
-
+        
     }
 }

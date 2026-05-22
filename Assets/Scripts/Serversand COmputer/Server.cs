@@ -3,7 +3,7 @@ using UnityEngine;
 public class Server : Interactable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Start()
     {
         taskActive=false;
     }

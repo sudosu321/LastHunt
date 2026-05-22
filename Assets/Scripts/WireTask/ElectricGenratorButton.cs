@@ -13,6 +13,12 @@ public class ElectricGenratorButton : Interactable
     private bool elecGenStarted=false;
     public GameObject lights;
     public int id_gen=0;    
+    public GameObject[] nser;
+    public GameObject[] cser;
+    public Material nserMat;
+    public Material cserMat;
+    public AudioSource serverHum;
+
     void Start()
     {
         promptMessage="Generator Button";
@@ -54,10 +60,24 @@ public class ElectricGenratorButton : Interactable
             if (player.wireTaskComplete)
             {
                 lights.SetActive(true);
-                promptMessage="Generator working";
+                promptMessage="Generator working ,Servers are now on !";
                 elecGenStarted=true;
-            gen.genHuming.Play();
+                gen.genHuming.Play();
+                for(int i =0;i< 9; i++)
+                {
+                    nser[i].GetComponent<Hinter>().defaultMEssage="Servers are now powered on";
+                    nser[i].GetComponent<Hinter>().onInteract="Servers are working";
+                    nser[i].GetComponent<Renderer>().material=nserMat;
+                }
+                for(int i =0;i< 3; i++)
+                {
+                    cser[i].GetComponent<Hinter>().defaultMEssage="Servers are now powered on";
+                    cser[i].GetComponent<Hinter>().onInteract="Servers corrupted";
+                    cser[i].GetComponent<Renderer>().material=cserMat;
 
+
+                }
+                serverHum.Play();
                 player.SERVER_FEUL_TASK=true;
             }
             else
@@ -67,6 +87,5 @@ public class ElectricGenratorButton : Interactable
             }
         }
         
-        taskActive=false;
     }
 }

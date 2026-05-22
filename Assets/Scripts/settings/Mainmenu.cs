@@ -6,17 +6,17 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         GameSettings.Instance.debugMode = false;
-        SceneManager.LoadScene("main_game");
+        intro();
     }
     public void intro()
     {
-        SceneManager.LoadScene("intro");
+        SceneManager.LoadScene("menu_selector");
     }
 
-    public void DebugPlay()
+    public void credits()
     {
-        GameSettings.Instance.debugMode = true;
-        SceneManager.LoadScene("main_game");
+       SceneManager.LoadScene("credits");
+
     }
 
     public void OpenSettings()

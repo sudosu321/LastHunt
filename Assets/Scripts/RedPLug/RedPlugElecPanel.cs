@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Unity.AI.Navigation;
 using UnityEngine;
-
+using UnityEngine.Video;
 public class RedPlugElecPanel : Interactable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,17 +17,20 @@ public class RedPlugElecPanel : Interactable
     public Transform doorTransform;
     public float moveSpeed = 1f;
     public float openHeight = 7f;
-
+public VideoPlayer videoPlayer;
     private Vector3 closedPosition;
     private Vector3 openPosition;
     public AudioSource pandaWakes;
     public AudioSource doorOpens
     ;
-
+    public GameObject raw;
+    public GameObject pause;
+    public GameObject controls;
+    
     private bool isMoving = false;
     private bool isOpen = false;
     public AudioSource plugSwitch;
-    void Start()
+    public void Start()
     {
         taskActive=true;
         promptMessage="electric panel";
@@ -51,8 +54,26 @@ public class RedPlugElecPanel : Interactable
         Invoke("bakke",8);
         navMeshSurface.BuildNavMesh();
         wire.GetComponent<Renderer>().material=greenMat;
-        Invoke("spawn",3);
-    }   
+        Invoke("spawn",10);
+        Invoke("dothishsit",2);
+       
+    }
+    void dothishsit()
+    {
+        pause.SetActive(false);
+        controls.SetActive(false);
+
+         raw.SetActive(true);
+        videoPlayer.Play();
+        videoPlayer.loopPointReached += OnVideoFinished;
+    }
+    void OnVideoFinished(VideoPlayer vp)
+    {
+         pause.SetActive(true);
+        controls.SetActive(true);
+       raw.SetActive(false);
+    }
+    
     void spawn()
     {
         Destroy(display);

@@ -4,8 +4,10 @@ public class cuttableWire : Interactable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject actualWire;
-    void Start()
+    public AudioSource cut;
+    public  void Start()
     {
+        defPlay=false;
         promptMessage="seems i can cut this wire";
     }
 
@@ -31,6 +33,7 @@ public class cuttableWire : Interactable
                     Destroy(actualWire);
                     taskActive=false;
                     player.isCorruptedServerDestroyed=true;
+                    cut.Play();
                 }
                 else
                 {
