@@ -1,42 +1,32 @@
 ---
-LAST HUNT
+FRIGHT - NIGHT
 ---
->a curious explorer go to the woods but ends up getting trapped in an abandoned research facility gaurded by an advance security animatronics , can he make his way out alive or is it going to be his last every hunt !
+you are trapped in an abandoned lab from past , there are animatronics gaurding the place , you need to make your way out of there ! 
 
-Yepp thats the story line i have decied for this little game ,
-you start from a ware house and solve little big puzzles to find your way out 
-the scene (map ) of the building is small but will surely expand it more 
+Gameplay Guide : 
+> You start from a warehouse you are trapped inside a warehouse ,ou hae a door, genrator and some gas cans , find a filled one and try turning on the genrator then only the door will work and you will proceed to next room
+> The next room will be locked too , there is a electric panel that needs to be fixed , find a red plug and fix the panel this will power on the next gate BUT also the animatronics that was lying there sleeping
+> You will need to get away from his sight and you will get access to most of the areas of the building
+> You have hiding places almost anywhere on the map , you will have a gun and access to very limited ammo so use wisely , you also have access to CCTV cameras visible on moniters , you can check the location of the animatronics at any time
+> Guns can be used to make the animatronics sleep for few seconds , destroy some crates or walls that might be blocking your path
+> Shooting a gun triggers an explicit_discover mechanism that instantly summons the animatronics to the location where the gun was shot 
+> You will have some plasma syntesizers , plasma cubes and electric panels ,key cards for some doors, pick up the plasma cubes and fill in the syntesizers , they work as mini genrators , that will allow them to power on the nearest panel
+> Turning on 4 such panels by filling up 4 plasma cubes into the different syntesizers , the main electricity will be on , that will give power to a new animatronics
+> You dont need to worry about it as it just acts a patrol gaurd and doesnt attack the player
+> You have now access to the main exit gate , but for that you need to fix all the three switches in the electric panel
+> Also you have to disable the security system using the computer in the secret room
+> For the computer to work , you must have electricity on , servers runninng and fixed
+> Servers can be turned on by feuling the genrators , fixing the borken wire and using pliers to cut off supply to the corrupted server
+> After that you will be able to use the supercomputer to disable the security , you need to enter the code written on the animatronics into the supercomputer
+> BUT there is a catch ,as soon as you enter the first code (there are two animatronics and you will need to enter both their codes ) , it will make the escape of a junked disable animatronics , that surely doesnt attack but is troublesome as it follows you with great speed and tells your location to the first animatronics , you can easily be caught
+> You will need to trickfully escape from there through the main exit gate
 
-the robot ai works on navmesh agent 
-it can detect gunshot and can come right often 
-dont every think of sprinting when its near 
-it works on detecting the player by sending raycasts in all the directions and check whether it hits then it detects the player
-i force playerdetection methods when not in raycast but sprinting or gunshot is detected 
+ALL THE BESTT !!!! 
+I have been working on this game for 6 months now and it finally can be released , will be soon on playstore and pc version will be out too !
 
+TechStack : 
+Unity C# 
+All the models are open source and sound effects are royality free
 
-Dont worry its ongoing poject will improve textures and add juice (sounds interactables)
-
-******
-those who will be playing herea are hints 
->find the feul for turining the main generator then the metal door can be opened
->then to turn the panel you need to find a red plug
->the panel can also activate the robot so watch ouy
->then you need to find plasma cubes to power the plasma syntesizer (childish ik) and this will power other panels (3 panels in total) find them and turn them on
->now you will be able to exit main hall , then you have to find a supercomputer to enter the seriel code for the robot , seriel code can be found in its stomach , only visible when its shot (3 times)
->shoot the robot near stomach cuz its head doesnt have a collider yet
->entering the serial code will turn the securtiy for 60 sec and you will be able to escape
-
-******
-That was it I will expand the map and add more puzzles and also optimize the game as much as possible
-Thanks for Reading <33
-
-#TechStack
-C# -Unity
-![WhatsApp Image 2026-01-20 at 17 59 30](https://github.com/user-attachments/assets/b1d26bfc-7ba6-41f7-a385-9483c87f79f3)
-![WhatsApp Image 2026-01-20 at 17 59 31](https://github.com/user-attachments/assets/f0a91697-96b7-46a9-8fc2-ac426a26b20e)
-![WhatsApp Image 2026-01-20 at 17 59 32](https://github.com/user-attachments/assets/b77ca1f9-6cc4-49ac-9e47-bcffd54cbbc5)
-![WhatsApp Image 2026-01-20 at 17 59 33](https://github.com/user-attachments/assets/b95281ba-b181-4f4d-b320-2a59a3e0b7b1)
-![WhatsApp Image 2026-01-20 at 17 59 34](https://github.com/user-attachments/assets/141fc1f2-5fc4-4370-a578-e9e039343e70)
-![WhatsApp Image 2026-01-20 at 17 59 35](https://github.com/user-attachments/assets/1ed46a5b-a38d-4d13-8187-63e750b906bb)
-
+THANKS FOR PLAYING !!!
 
