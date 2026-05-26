@@ -1,32 +1,225 @@
+# FRIGHT - NIGHT
+
+## Overview
+
+You are trapped inside an abandoned laboratory from the past.
+The facility is filled with deadly animatronics guarding every corridor, and your only goal is simple:
+
+**Escape alive.**
+
+Search for power sources, repair broken systems, avoid detection, and survive long enough to reach the main exit gate.
+
+But remember — every sound you make could attract something watching in the dark.
+
 ---
-FRIGHT - NIGHT
+
+# Three Nights of Survival
+
+The game features **3 total nights**, each becoming progressively harder.
+
+Every night introduces:
+
+* New objectives
+* More dangerous animatronics
+* Harder puzzles
+* Increased map pressure
+* Less room for mistakes
+
+Surviving one night only means the next nightmare begins.
+
 ---
-you are trapped in an abandoned lab from past , there are animatronics gaurding the place , you need to make your way out of there ! 
 
-Gameplay Guide : 
-> You start from a warehouse you are trapped inside a warehouse ,ou hae a door, genrator and some gas cans , find a filled one and try turning on the genrator then only the door will work and you will proceed to next room
-> The next room will be locked too , there is a electric panel that needs to be fixed , find a red plug and fix the panel this will power on the next gate BUT also the animatronics that was lying there sleeping
-> You will need to get away from his sight and you will get access to most of the areas of the building
-> You have hiding places almost anywhere on the map , you will have a gun and access to very limited ammo so use wisely , you also have access to CCTV cameras visible on moniters , you can check the location of the animatronics at any time
-> Guns can be used to make the animatronics sleep for few seconds , destroy some crates or walls that might be blocking your path
-> Shooting a gun triggers an explicit_discover mechanism that instantly summons the animatronics to the location where the gun was shot 
-> You will have some plasma syntesizers , plasma cubes and electric panels ,key cards for some doors, pick up the plasma cubes and fill in the syntesizers , they work as mini genrators , that will allow them to power on the nearest panel
-> Turning on 4 such panels by filling up 4 plasma cubes into the different syntesizers , the main electricity will be on , that will give power to a new animatronics
-> You dont need to worry about it as it just acts a patrol gaurd and doesnt attack the player
-> You have now access to the main exit gate , but for that you need to fix all the three switches in the electric panel
-> Also you have to disable the security system using the computer in the secret room
-> For the computer to work , you must have electricity on , servers runninng and fixed
-> Servers can be turned on by feuling the genrators , fixing the borken wire and using pliers to cut off supply to the corrupted server
-> After that you will be able to use the supercomputer to disable the security , you need to enter the code written on the animatronics into the supercomputer
-> BUT there is a catch ,as soon as you enter the first code (there are two animatronics and you will need to enter both their codes ) , it will make the escape of a junked disable animatronics , that surely doesnt attack but is troublesome as it follows you with great speed and tells your location to the first animatronics , you can easily be caught
-> You will need to trickfully escape from there through the main exit gate
+# Gameplay Guide
 
-ALL THE BESTT !!!! 
-I have been working on this game for 6 months now and it finally can be released , will be soon on playstore and pc version will be out too !
+## Phase 1 — Escape the Warehouse
 
-TechStack : 
-Unity C# 
-All the models are open source and sound effects are royality free
+You begin trapped inside a warehouse.
 
-THANKS FOR PLAYING !!!
+The exit door has no power, so you must:
 
+* Search the area for a **filled gas can**
+* Fuel the generator
+* Turn the generator on
+* Restore power to the warehouse door
+
+Once powered, the first door will finally open.
+
+---
+
+## Phase 2 — Restore the Electric Panel
+
+The next room is also locked.
+
+Inside, you will find a damaged electric panel that must be repaired.
+
+Your objectives:
+
+* Find the **red plug**
+* Repair the panel
+* Restore power to the next gate
+
+### WARNING
+
+Fixing the panel also powers on a sleeping animatronic nearby.
+
+The hunt begins.
+
+---
+
+# Survival Mechanics
+
+### Hide
+
+Hiding spots are scattered throughout the map.
+Use them wisely to break line of sight and survive encounters.
+
+### CCTV System
+
+Security monitors around the facility allow you to:
+
+* Track animatronic movement
+* Monitor dangerous areas
+* Plan safer routes
+
+### Weapons
+
+You are equipped with:
+
+* A gun
+* Extremely limited ammo
+
+Use ammunition carefully.
+
+Guns can:
+
+* Temporarily disable animatronics for a few seconds
+* Destroy crates and weak walls blocking your path
+
+### Explicit Discover Mechanic
+
+Firing a weapon activates the **Explicit Discover** system.
+
+This instantly alerts animatronics to the exact location where the gunshot occurred.
+
+Every shot is a risk.
+
+---
+
+# Power System
+
+Throughout the facility you will discover:
+
+* Plasma Synthesizers
+* Plasma Cubes
+* Electric Panels
+* Keycards
+
+Insert Plasma Cubes into nearby synthesizers to power local systems.
+
+These synthesizers act like mini-generators and activate nearby electric panels.
+
+After activating **4 major panels**, the facility’s main electricity will be restored.
+
+---
+
+# The Patrol Animatronic
+
+Restoring full electricity activates another animatronic.
+
+Unlike the others:
+
+* It does NOT attack the player
+* It patrols the facility
+* It increases tension and map pressure
+
+---
+
+# Final Escape Objectives
+
+To unlock the main exit gate, you must:
+
+* Repair all 3 electrical switches
+* Disable the facility security system
+* Access the secret room computer
+
+However, the supercomputer only works if:
+
+* Main electricity is active
+* Servers are repaired and operational
+
+---
+
+# Server Repair Tasks
+
+To restore server functionality, you must:
+
+* Fuel generators
+* Repair broken wires
+* Use pliers to disconnect corrupted servers
+
+Once the servers are restored, the supercomputer becomes accessible.
+
+---
+
+# The Final Threat
+
+To disable security, you must enter the secret codes written on the animatronics.
+
+There are **2 codes** in total.
+
+### But there’s a catch...
+
+The moment you enter the FIRST code:
+
+A junked, disabled animatronic escapes containment.
+
+It does not attack directly...
+
+BUT:
+
+* It follows you at very high speed
+* Reveals your location to the hostile animatronics
+* Makes stealth significantly harder
+
+You must outsmart all of them and reach the final exit gate before it’s too late.
+
+---
+
+# Features
+
+* Atmospheric horror exploration
+* Stealth-based gameplay
+* Resource management
+* CCTV monitoring system
+* Dynamic AI behavior
+* Power restoration puzzles
+* Survival mechanics
+* Multiple animatronics with unique behavior
+* 3 unique survival nights
+* Tense endgame escape sequence
+
+---
+
+# Tech Stack
+
+* Engine: Unity
+* Language: C#
+* Models: Open-source assets
+* Audio: Royalty-free sound effects
+
+---
+
+# Release Information
+
+The game has been in development for over **6 months** and is finally nearing release.
+
+Planned platforms:
+
+* Android (Play Store)
+* PC
+
+---
+
+# THANK YOU FOR PLAYING!
+
+Good luck surviving the night.
