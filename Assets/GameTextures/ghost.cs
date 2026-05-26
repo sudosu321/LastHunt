@@ -17,7 +17,7 @@ public class ghost : Interactable
             
             if(!huwahh.isPlaying)
             huwahh.Play();
-         Invoke("setBlank",1.5f);
+         Invoke("setBlank",1f);
 
     }
     // Update is called once per frame

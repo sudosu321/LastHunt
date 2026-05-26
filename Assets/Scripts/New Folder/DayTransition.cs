@@ -38,6 +38,11 @@ public class DayTransition : MonoBehaviour
         yield return FadeText(0);
         yield return Fade(0);
     }
+    public IEnumerator FadeToBlack()
+    {
+        yield return Fade(1);
+
+    }
 
     IEnumerator Fade(float targetAlpha)
     {

@@ -584,9 +584,6 @@ public class Enemy : MonoBehaviour
              hasPath=cachedPath;
              timerpath=0;
         }
-        Debug.Log("cache" +cachedPath);
-        Debug.Log("remain dist "+agent.remainingDistance);
-        Debug.Log("pathstst "+agent.remainingDistance);
 
         
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 5f)
